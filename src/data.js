@@ -9,10 +9,17 @@ export const contact = {
   adresseFlyer: 'Quartier Totsi - Gblinkomé, non loin de la clinique de Totsi',
   bp: 'B.P : S/C 8609 Lomé-Togo',
   tel: ['(00228) 90 82 80 08', '(00228) 99 33 83 30'],
-  telLiens: ['+22890828008', '+22899338330'],
   email: 'info@ongbaari.com',
   site: 'www.ongbaarid.org',
   recepisse: 'N° : 901 / 12 / 2020 / MATDDT',
+}
+
+export const hero = {
+  ligne1: 'Délions les langues,',
+  ligne2: 'libérons la parole,',
+  ligne3: 'parlons',
+  ligne3Accent: "d'infertilité !",
+  tag: "Parce qu'elle ne doit plus être un tabou",
 }
 
 export const nav = [

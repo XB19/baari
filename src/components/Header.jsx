@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import Icon from './Icon'
-import { contact, nav } from '../data'
+import { nav } from '../data'
+import { telHref, useContent } from '../ContentContext'
 
 export default function Header() {
+  const { contact } = useContent()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('accueil')
@@ -28,7 +30,7 @@ export default function Header() {
         <div className="container topbar-inner">
           <span><Icon name="MapPin" size={15} /> {contact.adresse} – Lomé, Togo</span>
           <span className="topbar-right">
-            <a href={`tel:${contact.telLiens[0]}`}><Icon name="Phone" size={15} /> {contact.tel[0]}</a>
+            {contact.tel[0] && <a href={telHref(contact.tel[0])}><Icon name="Phone" size={15} /> {contact.tel[0]}</a>}
             <a href={`mailto:${contact.email}`}><Icon name="Mail" size={15} /> {contact.email}</a>
           </span>
         </div>

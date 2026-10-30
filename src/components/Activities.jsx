@@ -1,8 +1,9 @@
 import Icon from './Icon'
 import SectionTitle from './SectionTitle'
-import { activites, encorePlus } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function Activities() {
+  const { activites, encorePlus } = useContent()
   return (
     <section id="activites" className="section activities">
       <div className="container">
@@ -20,7 +21,7 @@ export default function Activities() {
                 <h3>{a.titre}</h3>
                 {a.sousTitre && <p className="activity-sub">{a.sousTitre}</p>}
                 <ul>
-                  {a.points.map((p) => (
+                  {(a.points || []).map((p) => (
                     <li key={p}>{p}</li>
                   ))}
                 </ul>

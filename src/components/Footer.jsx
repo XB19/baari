@@ -1,7 +1,9 @@
 import Icon from './Icon'
-import { contact, nav, activites } from '../data'
+import { nav } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function Footer() {
+  const { contact, activites } = useContent()
   return (
     <footer className="footer">
       <div className="container footer-grid">

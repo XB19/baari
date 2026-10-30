@@ -13,8 +13,9 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollUI from './components/ScrollUI'
 import useReveal from './components/useReveal'
+import { ContentProvider } from './ContentContext'
 
-export default function App() {
+function Site() {
   useReveal()
 
   return (
@@ -36,5 +37,13 @@ export default function App() {
       <Footer />
       <ScrollUI />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <ContentProvider>
+      <Site />
+    </ContentProvider>
   )
 }

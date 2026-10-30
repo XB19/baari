@@ -1,7 +1,8 @@
 import Icon from './Icon'
-import { contact, mission } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function About() {
+  const { contact, mission } = useContent()
   return (
     <section id="apropos" className="section about">
       <div className="container about-grid">

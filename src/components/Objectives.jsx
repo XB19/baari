@@ -1,8 +1,9 @@
 import Icon from './Icon'
 import SectionTitle from './SectionTitle'
-import { objectifs, groupesCibles } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function Objectives() {
+  const { objectifs, groupesCibles } = useContent()
   return (
     <section id="objectifs" className="section objectives">
       <div className="container">

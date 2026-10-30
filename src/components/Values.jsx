@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Icon from './Icon'
 import SectionTitle from './SectionTitle'
-import { valeurs } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function Values() {
+  const { valeurs } = useContent()
   const [current, setCurrent] = useState(0)
   const v = valeurs[current]
+  if (!v) return null
 
   return (
     <section id="valeurs" className="section values">

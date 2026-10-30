@@ -1,0 +1,12 @@
+.git
+.gitignore
+.vercel
+.dockerignore
+.env*
+Dockerfile
+compose.yaml
+README.md
+dist
+node_modules
+server/.env*
+server/uploads

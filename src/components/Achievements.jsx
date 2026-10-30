@@ -1,8 +1,9 @@
 import Icon from './Icon'
 import SectionTitle from './SectionTitle'
-import { realisations } from '../data'
+import { useContent } from '../ContentContext'
 
 export default function Achievements() {
+  const { realisations } = useContent()
   return (
     <section id="realisations" className="section achievements">
       <div className="container">
@@ -17,7 +18,7 @@ export default function Achievements() {
               <div className="card-body">
                 <h3>{r.titre}</h3>
                 {r.texte && <p>{r.texte}</p>}
-                {r.lieux && (
+                {r.lieux?.length > 0 && (
                   <ul className="places">
                     {r.lieux.map((l) => (
                       <li key={l}><Icon name="MapPin" size={16} /> {l}</li>

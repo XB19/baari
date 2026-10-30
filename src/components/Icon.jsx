@@ -10,6 +10,8 @@ const icons = {
   ShieldCheck, Smile, Sparkles, Stethoscope, Target, User, UserRound, Users, X,
 }
 
+export const iconNames = Object.keys(icons)
+
 export default function Icon({ name, size = 24, ...props }) {
   const Cmp = icons[name] || Circle
   return <Cmp size={size} strokeWidth={1.8} aria-hidden="true" {...props} />

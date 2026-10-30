@@ -1,5 +1,5 @@
 import SectionTitle from './SectionTitle'
-import { equipe } from '../data'
+import { useContent } from '../ContentContext'
 
 const initials = (nom) =>
   nom
@@ -9,6 +9,7 @@ const initials = (nom) =>
     .join('')
 
 export default function Team() {
+  const { equipe } = useContent()
   return (
     <section id="equipe" className="section team">
       <div className="container">
@@ -16,7 +17,9 @@ export default function Team() {
         <div className="team-grid">
           {equipe.map((m, i) => (
             <div className="member reveal zoom" key={m.nom} style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="member-avatar">{initials(m.nom)}</div>
+              <div className="member-avatar">
+                {m.photo ? <img src={m.photo} alt={m.nom} /> : initials(m.nom)}
+              </div>
               <h3>{m.nom}</h3>
               <span>{m.role}</span>
             </div>

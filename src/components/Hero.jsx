@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import Icon from './Icon'
 import Typewriter from './Typewriter'
-import { contact, mission } from '../data'
-
-const titre = [
-  [{ text: 'Délions les langues,' }],
-  [{ text: 'libérons la parole,', className: 'accent-blue' }],
-  [{ text: 'parlons ' }, { text: "d'infertilité !", className: 'accent-orange' }],
-]
+import { useContent } from '../ContentContext'
 
 export default function Hero() {
+  const { contact, hero, mission } = useContent()
+  const titre = [
+    [{ text: hero.ligne1 }],
+    [{ text: hero.ligne2, className: 'accent-blue' }],
+    [{ text: `${hero.ligne3} ` }, { text: hero.ligne3Accent.replace(/ ([!?:;])/g, '\u00a0$1'), className: 'accent-orange' }],
+  ]
   const [typed, setTyped] = useState(false)
   const bgRef = useRef(null)
 
@@ -45,11 +45,11 @@ export default function Hero() {
           <span className="hero-badge hero-in" style={{ '--d': '0s' }}>
             <Icon name="ShieldCheck" size={16} /> Domaine d'action : {contact.domaine}
           </span>
-          <h1 aria-label="Délions les langues, libérons la parole, parlons d'infertilité !">
+          <h1 aria-label={`${hero.ligne1} ${hero.ligne2} ${hero.ligne3} ${hero.ligne3Accent}`}>
             <Typewriter lines={titre} onDone={() => setTyped(true)} />
           </h1>
           <p className="hero-tag hero-after" style={{ '--d': '0s' }}>
-            Parce qu'elle ne doit plus être un tabou
+            {hero.tag}
           </p>
           <p className="hero-text hero-after" style={{ '--d': '.2s' }}>
             L'Association BAARI « La Barre des Arides » œuvre pour la {mission.charAt(0).toLowerCase() + mission.slice(1)}

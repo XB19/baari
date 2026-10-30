@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { objectifs, groupesCibles, valeurs, realisations } from '../data'
-
-const stats = [
-  { value: valeurs.length, label: 'Valeurs fondatrices' },
-  { value: objectifs.length, label: 'Objectifs stratégiques' },
-  { value: groupesCibles.length, label: 'Groupes cibles' },
-  { value: realisations[0].lieux.length, label: 'Localités sensibilisées' },
-]
+import { useContent } from '../ContentContext'
 
 function Counter({ value }) {
   const [n, setN] = useState(0)
@@ -30,6 +23,14 @@ function Counter({ value }) {
 }
 
 export default function Stats() {
+  const { objectifs, groupesCibles, valeurs, realisations } = useContent()
+  const stats = [
+    { value: valeurs.length, label: 'Valeurs fondatrices' },
+    { value: objectifs.length, label: 'Objectifs stratégiques' },
+    { value: groupesCibles.length, label: 'Groupes cibles' },
+    { value: realisations.reduce((n, r) => n + (r.lieux?.length || 0), 0), label: 'Localités sensibilisées' },
+  ]
+
   return (
     <section className="stats">
       <div className="container stats-grid">
